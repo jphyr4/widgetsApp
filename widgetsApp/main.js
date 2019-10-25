@@ -22,7 +22,7 @@ class API{
 
    
     getData(cityName){
-       var apiURL = "";
+        var apiURL = "";
         if(typeof cityName === "string"){
            apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +"&APPID=3e5232bce94ee4b7b565b64182f6468c";
         }
@@ -30,7 +30,7 @@ class API{
             apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + cityName + "&APPID=3e5232bce94ee4b7b565b64182f6468c";
         }
         var config = {
-            type: "POST",
+            type: "GET",
 			dataType: "json",
 			url: apiURL,
 			success: (response) => {
@@ -55,10 +55,9 @@ class API{
       $(".cityUpdate").text(title);
       $(".ferUpdate").text(fehr.toFixed(0));
       $(".description").text(newWeather);
-
-
-
     }
+
+    updateGoogleMap
 }
 
 
