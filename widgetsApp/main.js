@@ -8,16 +8,26 @@ function startApp(){
 
 class API{
     constructor(){
-        this.getValueFromInput = this.getValueFromInput.bind(this);
+       this.getValueFromInput = this.getValueFromInput.bind(this);
     }
 
     getValueFromInput(){
         var cityName = $(".getValue").val();
+        if(parseInt(cityName)){
+            cityName = parseInt(cityName);
+        }
         this.getData(cityName);
     }
 
+   
     getData(cityName){
-        var apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +"&APPID=3e5232bce94ee4b7b565b64182f6468c";
+       var apiURL = "";
+        if(typeof cityName === "string"){
+           apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +"&APPID=3e5232bce94ee4b7b565b64182f6468c";
+        }
+        else if(typeof cityName === "number"){
+            apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + cityName + "&APPID=3e5232bce94ee4b7b565b64182f6468c";
+        }
         var config = {
             type: "POST",
 			dataType: "json",
@@ -52,4 +62,3 @@ class API{
 
 
 
-//api.openweathermap.org/data/2.5/weather?q=Los Angeles&APPID=3e5232bce94ee4b7b565b64182f6468c
