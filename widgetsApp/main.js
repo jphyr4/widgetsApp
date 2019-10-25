@@ -17,6 +17,7 @@ class API{
             cityName = parseInt(cityName);
         }
         this.getData(cityName);
+        $(".box").addClass("animate");
     }
 
    
