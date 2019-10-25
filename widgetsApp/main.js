@@ -8,11 +8,12 @@ function startApp(){
 
 class API{
     constructor(){
-        this.getValueFromInput = this.getValueFromInput.bind(this);
+       this.getValueFromInput = this.getValueFromInput.bind(this);
     }
 
     getValueFromInput(){
         var cityName = $(".getValue").val();
+        console.log(typeof cityName);
         this.getData(cityName);
     }
 
@@ -34,4 +35,3 @@ class API{
     }
 }
 
-//api.openweathermap.org/data/2.5/weather?q=Los Angeles&APPID=3e5232bce94ee4b7b565b64182f6468c
