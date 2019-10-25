@@ -14,6 +14,7 @@ class API{
     getValueFromInput(){
         var cityName = $(".getValue").val();
         this.getData(cityName);
+        $(".box").addClass("animate");
     }
 
     getData(cityName){

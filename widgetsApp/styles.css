@@ -18,3 +18,18 @@
 .wrapper{
   display: flex;
 }
+
+.animate {
+  animation: pulse 5s;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #8de0e2;
+  }
+  100% {
+    background-color: rgb(211, 120, 9);
+  }
+}
