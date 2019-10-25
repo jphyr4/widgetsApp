@@ -13,18 +13,28 @@ class API{
 
     getValueFromInput(){
         var cityName = $(".getValue").val();
-        console.log(typeof cityName);
+        if(parseInt(cityName)){
+            cityName = parseInt(cityName);
+        }
         this.getData(cityName);
     }
 
+   
     getData(cityName){
-        var apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +"&APPID=3e5232bce94ee4b7b565b64182f6468c";
+       var apiURL = "";
+        if(typeof cityName === "string"){
+           apiURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName +"&APPID=3e5232bce94ee4b7b565b64182f6468c";
+        }
+        else if(typeof cityName === "number"){
+            apiURL = "http://api.openweathermap.org/data/2.5/weather?zip=" + cityName + "&APPID=3e5232bce94ee4b7b565b64182f6468c";
+        }
         var config = {
             type: "POST",
 			dataType: "json",
 			url: apiURL,
 			success: (response) => {
                 console.log(response);
+                this.updateElements(response);
             },
 			error: (response) => {
 				alert ("Request Fail");
@@ -33,5 +43,22 @@ class API{
         }
         $.ajax(config)
     }
+
+    updateElements(cityDOM){
+      var title = cityDOM.name;
+      var fehr = cityDOM.main.temp;
+      var newWeather = cityDOM.weather[0].description;
+
+      fehr = (fehr - 273.15) * 1.8 +32;
+
+      $(".cityUpdate").text(title);
+      $(".ferUpdate").text(fehr.toFixed(0));
+      $(".description").text(newWeather);
+
+
+
+    }
 }
+
+
 
