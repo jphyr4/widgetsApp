@@ -17,6 +17,7 @@ class API{
             cityName = parseInt(cityName);
         }
         this.getData(cityName);
+        this.updateGoogleMap(cityName);
         $(".box").addClass("animate");
     }
 
@@ -57,7 +58,11 @@ class API{
       $(".description").text(newWeather);
     }
 
-    updateGoogleMap
+    updateGoogleMap(cityName){
+        var linkMap = $(".googleMap");
+        var link = "https://www.google.com/maps/embed/v1/place?key=AIzaSyDDqyvoZ7x7mvgATFFtQ_HiqZauVdZWe90&q=" + cityName;
+        linkMap.attr("src", link);
+    }
 }
 
 
