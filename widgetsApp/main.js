@@ -18,6 +18,7 @@ class API{
         }
         this.getData(cityName);
         this.updateGoogleMap(cityName);
+        $(".box").addClass("animate");
     }
 
    
